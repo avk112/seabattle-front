@@ -1,0 +1,14 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+
+@mixin standartBlock($direction: column, $justify: space-between, $align: center, $width: 100%) {
+  position: relative;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  width: $width;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

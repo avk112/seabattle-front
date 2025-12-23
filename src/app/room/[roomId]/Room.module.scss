@@ -1,0 +1,128 @@
+@use '../../../styles/' as *;
+
+.room {
+  position: relative;
+  flex: 1 1 auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &__top {
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    @media screen and (orientation: portrait) {
+      @media screen and (max-width: $tablet) {
+        flex-direction: row;
+        gap: 20px;
+      }
+    }
+
+    @media screen and (orientation: landscape) {
+      @media screen and (max-width: $notepad) {
+        flex-direction: row;
+        gap: 40px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    &__logo {
+      width: 400px;
+      height: auto;
+
+      @media screen and (orientation: portrait) {
+        @media screen and (max-width: $notepad) {
+          width: 300px;
+        }
+
+        @media screen and (max-width: $tablet) {
+          width: 150px;
+        }
+
+        @media screen and (max-width: $mobile) {
+          width: 130px;
+        }
+      }
+
+      @media screen and (orientation: landscape) {
+        @media screen and (max-width: $notepad) {
+          width: 150px;
+        }
+
+        @media screen and (max-width: $tablet) {
+          width: 200px;
+        }
+
+        @media screen and (max-width: $mobile) {
+          width: 150px;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 500;
+      color: $default;
+      text-shadow: 0 0 5px #000;
+
+      @media screen and (orientation: portrait) {
+        @media screen and (max-width: $notepad) {
+          font-size: 22px;
+        }
+
+        @media screen and (max-width: $tablet) {
+          font-size: 18px;
+        }
+
+        @media screen and (max-width: $mobile) {
+          font-size: 16px;
+        }
+      }
+
+      @media screen and (orientation: landscape) {
+        @media screen and (max-width: $notepad) {
+          font-size: 22px;
+        }
+
+        @media screen and (max-width: $tablet) {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  &__fields {
+    position: relative;
+    gap: 60px;
+
+    @media screen and (max-width: $notepad) {
+      gap: 40px;
+    }
+
+    @media screen and (orientation: portrait) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  button {
+    display: flex;
+    position: relative;
+    width: 200px;
+    background: $btnPrimary;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: $default;
+  }
+}
