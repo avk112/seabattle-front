@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "localhost": "env-cmd -f envs/.env.localhost next dev",
+    "dev": "env-cmd -f envs/.env.development next dev",
     "build": "next build",
     "start": "next start"
   },
@@ -26,6 +27,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "env-cmd": "^11.0.0"
   }
 }

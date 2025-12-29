@@ -4,7 +4,7 @@ let socket: Socket | null = null;
 
 export function getSocket() {
   if (!socket) {
-    socket = io('http://localhost:3001');
+    socket = io('https://seabattle-back.onrender.com');
   }
   return socket;
 }
