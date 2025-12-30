@@ -1,7 +1,7 @@
 'use client';
 
 import { getSocket } from '@/helpers/socket';
-import { Flex } from 'antd';
+import { Badge, Flex } from 'antd';
 import { useParams } from 'next/navigation';
 import { useEffect, useState, type FC } from 'react';
 
@@ -20,6 +20,7 @@ const FieldOpponent: FC<FieldOpponentProps> = () => {
   const { roomId } = useParams();
 
   const [cells, setCells] = useState<Cell[]>([]);
+  const [isOnline, setIsOnline] = useState(false);
 
   const cellsBlock = cells?.map((item: Cell, index: number) => {
     const { id, shipId, isHit } = item;
@@ -55,16 +56,29 @@ const FieldOpponent: FC<FieldOpponentProps> = () => {
       setCells(field);
     });
 
+    socket.on('opponentJoined', () => {
+      setIsOnline(true);
+    });
+
+    socket.on('opponentDisconnected', () => {
+      setIsOnline(false);
+    });
+
     return () => {
       socket.off('joinedRoom');
       socket.off('opponentFieldUpdate');
       socket.off('initiateFields');
+      socket.off('opponentJoined');
     };
   }, [roomId]);
 
   return (
     <Flex className={classes.fieldOpponent}>
-      <h4>Opponent</h4>
+      <Badge.Ribbon text={`${isOnline ? 'Online' : 'Offline'}`} color={`${isOnline ? 'green' : 'grey'}`}>
+        {' '}
+        <h4>Opponent</h4>
+      </Badge.Ribbon>
+
       <Flex className={classes.fieldOpponent__gameArea}>
         {cells.length === Math.pow(FIELD_SIZE, 2) ? cellsBlock : 'Loading...'}
       </Flex>
