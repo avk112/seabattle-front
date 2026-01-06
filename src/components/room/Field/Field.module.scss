@@ -55,15 +55,29 @@
   .hitShip {
     background: rgba(230, 8, 8, 0.897);
     border: 1px solid rgba(187, 187, 192, 0.6);
+    animation: rotation 1s linear;
   }
 
   .hitMiss {
     background: rgba(28, 28, 36, 0.4);
     border: 1px solid rgba(187, 187, 192, 0.493);
+    animation: rotation 1s linear;
   }
 
   .ship {
     background: rgba(2, 31, 247, 0.8);
     // border: 1px solid rgba(114, 123, 204, 0.6);
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg) scale(120%);
+    }
+    50% {
+      transform: rotate(720deg) scale(220%);
+    }
+    100% {
+      transform: scale(100%);
+    }
   }
 }
